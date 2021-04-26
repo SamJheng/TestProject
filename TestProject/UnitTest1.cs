@@ -15,7 +15,12 @@ namespace TestProject
         [Test]
         public void Test1()
         {
-            Assert.Pass();
+            var calculator = Substitute.For<ICalculator>();
+            calculator.Add(1, 2).Returns(3);
+            Assert.That(calculator.Add(1, 2), Is.EqualTo(3));
+            Console.WriteLine(calculator.Add(1, 2));
+
+           
         }
         [Test]
         public void Analyze_TooShortFileName_CallLogger()
